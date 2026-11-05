@@ -6,6 +6,12 @@ This project builds a win probability model from over 500,000 deliveries of men'
 
 **Status:** in progress
 
+## Key finding so far
+
+On average, the DLS Standard Edition par score is fair in T20: teams on par won 52% of the time, in line with the normal chasing advantage. But it **undervalues wickets in hand**, especially in the second half of a chase. In the last 5 overs, teams on par with 3-5 wickets down won 60%, while teams 6-9 down won 47%.
+
+![Win rate at DLS par by wickets lost](figures/win_at_par_by_wickets.png)
+
 ## Approach
 
 | Step | In this project | Notebook | Status |
@@ -15,7 +21,7 @@ This project builds a win probability model from over 500,000 deliveries of men'
 | 3. Evaluation | Log loss, Brier score and calibration, since the DLS test needs trustworthy probabilities | `02` | Done |
 | 4. Features | Runs needed, balls left, wickets left, required run rate, competition | `02` | Done |
 | 5. Modelling | Logistic regression baseline, split by match to avoid leakage; gradient boosting with monotonic constraints | `02`, `03` | Done |
-| 6. Experiments | Model comparison by phase of the chase, calibration, target-as-feature experiment; DLS fairness test (`04`) in progress | `03`, `04` | In progress |
+| 6. Experiments | Model comparison, calibration, target-as-feature experiment; DLS fairness test on 4,493 uninterrupted chases, split by wickets and phase | `03`, `04` | In progress |
 
 ## Data
 
