@@ -8,8 +8,6 @@ This project builds a win probability model from over 500,000 deliveries of men'
 
 ## Approach
 
-The project follows the [Zero To Mastery](https://zerotomastery.io/) 6-step machine learning framework.
-
 | Step | In this project | Notebook | Status |
 |---|---|---|---|
 | 1. Problem definition | Given the state of a chase, predict the probability the chasing team wins (binary classification), then use it to test DLS | `01` | Done |
