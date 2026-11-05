@@ -4,6 +4,8 @@ When rain shortens a match, the Duckworth-Lewis-Stern (DLS) method sets a revise
 
 This project tests that claim on **4,493 uninterrupted men's T20I and IPL chases** (over 500,000 deliveries). Because these matches finished normally, their real results show what *would* have happened to a team that was on DLS par at any given moment.
 
+**Try it:** `site/index.html` is an interactive version. Set any point in a chase to see the model's win chance, what DLS would decide if rain stopped play, and what real matches say about that call. Open the file in a browser; it needs no server.
+
 ## Key findings
 
 1. **On average, DLS par is fair.** Teams on par went on to win 52% of the time, in line with the normal chasing advantage.
@@ -41,6 +43,7 @@ South Africa were 147/4 after 15 overs, needing 30 off 30. The model gave them a
 | `04_dls_test.ipynb` | The DLS fairness test: win rate at par by wickets lost and stage of the chase |
 | `05_figures.ipynb` | Final figures |
 | `06_robustness.ipynb` | Reruns the main finding under different choices, plus the 149 real DLS matches |
+| `site/` | Interactive web page. `site/build/make_site.py` rebuilds it from the model and data |
 
 ### Why the main test doesn't use the model
 
