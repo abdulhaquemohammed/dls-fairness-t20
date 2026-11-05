@@ -16,8 +16,8 @@ The project follows the [Zero To Mastery](https://zerotomastery.io/) 6-step mach
 | 2. Data | Cricsheet ball-by-ball JSON parsed into 514k second-innings deliveries from 4,747 matches (149 DLS-affected) | `01` | Done |
 | 3. Evaluation | Log loss, Brier score and calibration, since the DLS test needs trustworthy probabilities | `02` | Done |
 | 4. Features | Runs needed, balls left, wickets left, required run rate, competition | `02` | Done |
-| 5. Modelling | Logistic regression baseline, split by match to avoid leakage; gradient boosting next | `02` | In progress |
-| 6. Experiments | Model comparison, calibration, then the DLS fairness test | | To do |
+| 5. Modelling | Logistic regression baseline, split by match to avoid leakage; gradient boosting with monotonic constraints | `02`, `03` | Done |
+| 6. Experiments | Model comparison by phase of the chase, calibration, target-as-feature experiment; DLS fairness test next | `03` | In progress |
 
 ## Data
 
