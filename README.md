@@ -15,7 +15,7 @@ This project builds a win probability model from over 500,000 deliveries of men'
 | 3. Evaluation | Log loss, Brier score and calibration, since the DLS test needs trustworthy probabilities | `02` | Done |
 | 4. Features | Runs needed, balls left, wickets left, required run rate, competition | `02` | Done |
 | 5. Modelling | Logistic regression baseline, split by match to avoid leakage; gradient boosting with monotonic constraints | `02`, `03` | Done |
-| 6. Experiments | Model comparison by phase of the chase, calibration, target-as-feature experiment; DLS fairness test next | `03` | In progress |
+| 6. Experiments | Model comparison by phase of the chase, calibration, target-as-feature experiment; DLS fairness test (`04`) in progress | `03`, `04` | In progress |
 
 ## Data
 
