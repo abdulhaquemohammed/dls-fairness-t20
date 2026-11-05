@@ -6,12 +6,18 @@ This project builds a win probability model from over 500,000 deliveries of men'
 
 **Status:** in progress
 
-## Notebooks
+## Approach
 
-| Notebook | What it does |
-|---|---|
-| `01_parse_data.ipynb` | Turns raw Cricsheet ball-by-ball JSON into one row per second-innings delivery (514k rows, 4,747 matches, 149 DLS-affected) |
-| `02_baseline.ipynb` | Logistic regression baseline, split by match to avoid leakage |
+The project follows the [Zero To Mastery](https://zerotomastery.io/) 6-step machine learning framework.
+
+| Step | In this project | Notebook | Status |
+|---|---|---|---|
+| 1. Problem definition | Given the state of a chase, predict the probability the chasing team wins (binary classification), then use it to test DLS | `01` | Done |
+| 2. Data | Cricsheet ball-by-ball JSON parsed into 514k second-innings deliveries from 4,747 matches (149 DLS-affected) | `01` | Done |
+| 3. Evaluation | Log loss, Brier score and calibration, since the DLS test needs trustworthy probabilities | `02` | Done |
+| 4. Features | Runs needed, balls left, wickets left, required run rate, competition | `02` | Done |
+| 5. Modelling | Logistic regression baseline, split by match to avoid leakage; gradient boosting next | `02` | In progress |
+| 6. Experiments | Model comparison, calibration, then the DLS fairness test | | To do |
 
 ## Data
 
