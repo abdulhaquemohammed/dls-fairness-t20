@@ -51,11 +51,17 @@ The win probability model (gradient boosting, log loss 0.380 vs 0.694 for a naiv
 - **Standard, not Professional Edition.** International matches use the proprietary DLS Professional (Stern) Edition, which was updated partly for high-scoring and shorter games. This project uses the public Standard Edition table from the ICC's DLS methodology document, so it may overstate the bias in the version actually used.
 - **Termination only.** The test asks what happens if rain *ends* a chase. DLS is also used to set revised targets before or during a chase, which isn't tested.
 - **Small samples at the extremes.** Situations like being on par with 9 wickets down are rare, so those estimates are uncertain. Only differences whose 95% intervals clear 50% are treated as real.
+- **Missing matches.** Cricsheet withholds matches involving the Afghanistan men's team or played in the Afghanistan Premier League (166 T20Is at the time of download), so they aren't in this dataset.
 - **Not fully independent.** A match can appear in more than one wicket group, so the groups aren't completely independent.
 
 ## Data
 
-Ball-by-ball data from [Cricsheet](https://cricsheet.org/downloads/), not included in this repo. Download the men's T20 internationals and IPL zips in JSON format and unzip into `data/t20s_male_json/` and `data/ipl_male_json/`. The DLS Standard Edition resource table is in `reference/dls_standard_edition.csv`.
+Ball-by-ball data from [Cricsheet](https://cricsheet.org/), downloaded 4 November 2026 and used under the [Open Data Commons Attribution License (ODC-By)](https://opendatacommons.org/licenses/by/1-0/).
+
+- **Included:** `data/chases.csv`, the processed dataset every result comes from (514,444 second-innings deliveries). This lets notebooks 02-06 run without downloading anything, and pins the exact data behind the numbers in this README.
+- **Not included:** the raw JSON (394MB, about 4,900 files). To rebuild `chases.csv` with notebook 01, download the men's T20 internationals and IPL zips in JSON format from [cricsheet.org/downloads](https://cricsheet.org/downloads/) and unzip into `data/t20s_male_json/` and `data/ipl_male_json/`. Cricsheet updates regularly, so a fresh download may give slightly different numbers.
+
+The DLS Standard Edition resource table is in `reference/dls_standard_edition.csv`, taken from the ICC's DLS methodology document.
 
 ## Running it
 
@@ -65,4 +71,4 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Then run the notebooks in order. Notebook 01 builds `data/chases.csv` and notebook 03 saves the model to `models/`, which later notebooks use.
+Then run the notebooks in order. `data/chases.csv` is already included, so notebook 01 is only needed to rebuild it from the raw data. Notebook 03 saves the model to `models/`, which notebook 05 uses.
