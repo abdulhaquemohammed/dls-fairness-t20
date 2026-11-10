@@ -8,7 +8,7 @@ This project tests that claim on **4,493 uninterrupted men's T20I and IPL chases
 
 1. **On average, DLS par is fair.** Teams on par went on to win 52% of the time, in line with the normal chasing advantage.
 2. **But it undervalues wickets in hand, especially late in a chase.** In the last 5 overs, teams on par with 3-5 wickets down won 60%, while teams 6-9 down won 47%. In overs 11-15, teams 0-2 down on par won 61%. A fair system would put all of these at about 50%.
-3. **The finding is robust in most checks.** The gap holds with different definitions of "on par", in T20Is alone, and before and after 2019. In the IPL alone it points the same way but is smaller (about 9 points) and borderline: its 95% interval reaches 0.
+3. **The finding is robust in most checks.** The gap holds with different definitions of "on par", in T20Is alone, before and after 2019, and in a permutation test using one moment per match (a gap that large appeared in only 2 of 10,000 shuffles). In the IPL alone it points the same way but is smaller (about 9 points) and borderline: its 95% interval reaches 0.
 
 A likely reason: DLS was built for 50-over cricket, where wickets are saved for a long innings. In T20 there are too few balls left to use them all, so a team with wickets in hand late in a chase can attack freely, which is worth more than the 50-over table assumes.
 
@@ -41,6 +41,7 @@ South Africa were 147/4 after 15 overs, needing 30 off 30. The model gave them a
 | `04_dls_test.ipynb` | The DLS fairness test: win rate at par by wickets lost and stage of the chase |
 | `05_figures.ipynb` | Final figures |
 | `06_robustness.ipynb` | Reruns the main finding under different choices, a match-level bootstrap, and the 149 real DLS matches |
+| `07_permutation_test.py` | Permutation test on the last-5-overs gap, with one independent observation per match |
 
 ### Why the main test doesn't use the model
 
@@ -52,7 +53,7 @@ The win probability model (gradient boosting, log loss 0.380 vs 0.694 for a naiv
 - **Termination only.** The test asks what happens if rain *ends* a chase. DLS is also used to set revised targets before or during a chase, which isn't tested.
 - **Small samples at the extremes.** Situations like being on par with 9 wickets down are rare, so those estimates are uncertain. Only differences whose 95% intervals clear 50% are treated as real.
 - **Missing matches.** Cricsheet withholds matches involving the Afghanistan men's team or played in the Afghanistan Premier League (166 T20Is at the time of download), so they aren't in this dataset.
-- **Not fully independent.** A match can appear in more than one wicket group (and more than once within a band of wicket counts), so the groups aren't fully independent and the simple error bars in notebook 04 are slightly too narrow. A match-level bootstrap in notebook 06 allows for this: the main gap's interval widens from 8.5-18.7 to 7.9-19.2 points, so the conclusion holds.
+- **Not fully independent.** A match can appear in more than one wicket group (and more than once within a band of wicket counts), so the groups aren't fully independent and the simple error bars in notebook 04 are slightly too narrow. A match-level bootstrap in notebook 06 allows for this: the main gap's interval widens from 8.5-18.7 to 7.9-19.2 points, so the conclusion holds. A permutation test in `07_permutation_test.py` goes further and uses only one moment per match (the first time a team is on par in the last 5 overs, 3-9 down): 3-5 down won 64.5% of 692 matches against 51.9% of 285 for 6-9 down, and shuffling the results 10,000 times produced a gap that large only twice (p = 0.0003).
 
 ## Data
 
